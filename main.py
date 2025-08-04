@@ -9,7 +9,7 @@ CHAT_ID = os.environ.get("CHAT_ID")
 PORT = int(os.environ.get("PORT", 8080))
 bot = telegram.Bot(token=TELEGRAM_TOKEN)
 
-@app.route(f"/{TELEGRAM_TOKEN}", methods=["POST"])
+@app.route("/webhook", methods=["POST"])
 def webhook():
     update = telegram.Update.de_json(request.get_json(force=True), bot)
     chat_id = update.message.chat.id
